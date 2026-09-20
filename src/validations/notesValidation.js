@@ -7,7 +7,6 @@ export const getAllNotesSchema = {
     search: Joi.string(),
     tag: Joi.string()
       .trim()
-      .allow('')
       .valid(...TAGS),
     page: Joi.number().integer().min(1).default(1),
     perPage: Joi.number().integer().min(5).max(20).default(10),
@@ -28,22 +27,21 @@ export const noteIdSchema = {
   }),
 };
 
-
 export const createNoteSchema = {
   [Segments.BODY]: Joi.object({
-    title: Joi.string().min(1),
-    content:Joi.string().allow(''),
-    tag:Joi.string().valid(...TAGS),
+    title: Joi.string().min(1).required(),
+    content: Joi.string().allow(''),
+    tag: Joi.string().valid(...TAGS),
   }),
 };
 
 export const updateNoteSchema = {
-    [Segments.PARAMS]: Joi.object({
+  [Segments.PARAMS]: Joi.object({
     noteId: Joi.string().custom(objectIdValidator).required(),
   }),
   [Segments.BODY]: Joi.object({
     title: Joi.string().min(1),
-    content:Joi.string().allow(''),
-    tag:Joi.string().valid(...TAGS),
+    content: Joi.string().allow(''),
+    tag: Joi.string().valid(...TAGS),
   }).min(1),
 };
