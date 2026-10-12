@@ -1,3 +1,4 @@
+import { swaggerDocs } from './middleware/swagger.js';
 import 'dotenv/config';
 import express from 'express';
 import cors from 'cors';
@@ -18,6 +19,8 @@ app.use(express.json());
 app.use(cors());
 app.use(logger);
 app.use(cookieParser());
+
+swaggerDocs(app);
 
 app.use(authRoutes);
 app.use(notesRoutes);
