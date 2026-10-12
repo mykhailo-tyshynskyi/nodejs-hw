@@ -16,6 +16,10 @@
     {
       "url": "http://localhost:3000",
       "description": "Development server"
+    },
+    {
+      "url": "https://nodejs-hw-8p61.onrender.com",
+      "description": "Production server"
     }
   ],
   "tags": [
@@ -296,13 +300,7 @@
       },
       "NotesPage": {
         "type": "object",
-        "required": [
-          "page",
-          "perPage",
-          "totalNotes",
-          "totalPages",
-          "notes"
-        ],
+        "required": ["page", "perPage", "totalNotes", "totalPages", "notes"],
         "properties": {
           "page": {
             "type": "integer"
